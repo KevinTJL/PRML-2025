@@ -29,7 +29,7 @@ x_pred = np.linspace(0, 10, 100).reshape(-1, 1)
 y_pred = rf.predict(x_pred)
 
 # 绘图
-plt.scatter(x, y, color="blue", label="Data", alpha=0.6)
+plt.scatter(x, y, color="blue", label="Train_Data", alpha=0.6)
 plt.scatter(test_data[0], test_data[1],color = "green", label="Test_Data", alpha=0.6)
 plt.plot(x_pred, y_pred, color="red", label="Random Forest Regression")
 plt.legend()

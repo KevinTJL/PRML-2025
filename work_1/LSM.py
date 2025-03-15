@@ -10,7 +10,7 @@ test_data = []
 df = pd.read_csv(file_path_train, usecols=[0, 1])
 train_data = df.values
 df = pd.read_csv(file_path_test, usecols=[0, 1])
-test_data = df.values.T
+test_data = df.values
 train_data = train_data.T
 
 lambda1 = train_data.shape[1]
@@ -39,7 +39,7 @@ y_line = a * x_line + b
 
 # 绘制散点
 plt.scatter(x_train, y_train, color='red', label="Train Data", marker='o')
-plt.scatter(x_test, y_test, color='yellow', label="Train Data", marker='o')
+plt.scatter(x_test, y_test, color='green', label="Test Data", marker='o')
 
 # 绘制直线
 plt.plot(x_line, y_line, color='blue', linestyle='-', linewidth=2, label=f"y = {a}x + {b}")
@@ -52,3 +52,4 @@ plt.title("Linear Function with Scatter Data")
 
 # 显示图像
 plt.show()
+print(a,b)

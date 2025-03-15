@@ -37,7 +37,8 @@ X_fit = np.vstack([np.ones_like(x_fit), x_fit]).T
 y_fit = X_fit @ theta  # 预测曲线
 
 # 绘图
-plt.scatter(x, y_true, label="Data", color="blue")
+plt.scatter(x, y_true, label="Train_Data", color="blue")
+plt.scatter(test_data[0], test_data[1],color = "green", label="Test_Data", alpha=0.6)
 plt.plot(x_fit, y_fit, color="red", label="Newton Fit (Least Squares)")
 plt.legend()
 plt.title("Linear Curve Fitting using Newton's Method")
