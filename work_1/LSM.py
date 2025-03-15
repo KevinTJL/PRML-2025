@@ -1,15 +1,16 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
-import torch
 
 # 读取CSV文件，仅导入第一列和第二列
-file_path = "./PRML-2025/work_1/data.csv"  # 替换为你的CSV文件路径
+file_path_train = "./PRML-2025/work_1/data_train.csv"  # 替换为你的CSV文件路径
+file_path_test = "./PRML-2025/work_1/data_test.csv"
 train_data = []
 test_data = []
-df = pd.read_csv(file_path, usecols=[0, 1])
+df = pd.read_csv(file_path_train, usecols=[0, 1])
 train_data = df.values
-# test_data = df.iloc[:, 1].values
+df = pd.read_csv(file_path_test, usecols=[0, 1])
+test_data = df.values.T
 train_data = train_data.T
 
 lambda1 = train_data.shape[1]
@@ -29,6 +30,8 @@ b = train_data[1].mean() - a * train_data[0].mean()
 # 提取散点数据
 x_train = train_data.T[:, 0]  # 取 x 坐标
 y_train = train_data.T[:, 1]  # 取 y 坐标
+x_test = test_data[:, 0]  # 取 x 坐标
+y_test = test_data[:, 1]  # 取 y 坐标
 
 # 生成用于绘制直线的 x 值
 x_line = np.linspace(min(x_train) - 1, max(x_train) + 1, 100)
@@ -36,6 +39,7 @@ y_line = a * x_line + b
 
 # 绘制散点
 plt.scatter(x_train, y_train, color='red', label="Train Data", marker='o')
+plt.scatter(x_test, y_test, color='yellow', label="Train Data", marker='o')
 
 # 绘制直线
 plt.plot(x_line, y_line, color='blue', linestyle='-', linewidth=2, label=f"y = {a}x + {b}")
