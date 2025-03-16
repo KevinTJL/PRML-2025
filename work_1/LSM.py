@@ -30,11 +30,8 @@ b = train_data[1].mean() - a * train_data[0].mean()
 # 提取散点数据
 x_train = train_data.T[:, 0]  # 取 x 坐标
 y_train = train_data.T[:, 1]  # 取 y 坐标
-<<<<<<< HEAD
 x_test = test_data[:, 0]  # 取 x 坐标
 y_test = test_data[:, 1]  # 取 y 坐标
-=======
->>>>>>> 15c491205a283be9f38579645325c368c1a8577c
 
 # 生成用于绘制直线的 x 值
 x_line = np.linspace(min(x_train) - 1, max(x_train) + 1, 100)
@@ -42,10 +39,7 @@ y_line = a * x_line + b
 
 # 绘制散点
 plt.scatter(x_train, y_train, color='red', label="Train Data", marker='o')
-<<<<<<< HEAD
 plt.scatter(x_test, y_test, color='green', label="Test Data", marker='o')
-=======
->>>>>>> 15c491205a283be9f38579645325c368c1a8577c
 
 # 绘制直线
 plt.plot(x_line, y_line, color='blue', linestyle='-', linewidth=2, label=f"y = {a}x + {b}")
@@ -58,7 +52,4 @@ plt.title("Linear Function with Scatter Data")
 
 # 显示图像
 plt.show()
-<<<<<<< HEAD
 print(a,b)
-=======
->>>>>>> 15c491205a283be9f38579645325c368c1a8577c
