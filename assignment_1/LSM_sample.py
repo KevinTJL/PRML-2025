@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 import pandas as pd
 
-file_path = "./PRML-2025./work_1/data.csv"  # 替换为你的CSV文件路径
+file_path = "./PRML-2025./assignment_1/data.csv"  # 替换为你的CSV文件路径
 train_data = []
 test_data = []
 df = pd.read_csv(file_path, usecols=[0, 1])

@@ -7,8 +7,8 @@ from sklearn.metrics import mean_squared_error, mean_absolute_error
 import pandas as pd
 
 # 读取CSV文件
-file_path_train = "./work_1/data_train.csv"  
-file_path_test = "./work_1/data_test.csv"
+file_path_train = "./assignment_1/data_train.csv"  
+file_path_test = "./assignment_1/data_test.csv"
 
 df_train = pd.read_csv(file_path_train, usecols=[0, 1])
 df_test = pd.read_csv(file_path_test, usecols=[0, 1])
