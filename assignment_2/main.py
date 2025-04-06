@@ -20,9 +20,9 @@ def make_moons_3d(n_samples=500, noise=0.1):
     return X, y_labels
 
 # 原先生成的训练数据（1000个数据点，每类500个）
-X, labels = make_moons_3d(n_samples=1000, noise=0.2)
+X, labels = make_moons_3d(n_samples=1000, noise=2)
 
-# 绘制训练数据（可选）
+# # 绘制训练数据（可选）
 # fig = plt.figure()
 # ax = fig.add_subplot(111, projection='3d')
 # scatter = ax.scatter(X[:, 0], X[:, 1], X[:, 2], c=labels, cmap='viridis', marker='o')
@@ -33,13 +33,13 @@ X, labels = make_moons_3d(n_samples=1000, noise=0.2)
 # ax.set_zlabel('Z')
 # plt.title('3D Make Moons (Training Data)')
 # plt.show()
-# ------------------------------------------------------
+# # ------------------------------------------------------
 
 # 直接使用原先生成的训练数据
 X_train, y_train = X, labels
 
 # 为测试生成新数据：500个数据点（每类250个）
-X_test, y_test = make_moons_3d(n_samples=250, noise=0.2)
+X_test, y_test = make_moons_3d(n_samples=250, noise=2)
 
 # ----------------------- 模型训练 -----------------------
 
