@@ -10,6 +10,23 @@ from tensorflow.keras.callbacks import EarlyStopping
 from sklearn.metrics import mean_squared_error
 import matplotlib.pyplot as plt
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
+plt.rcParams['font.sans-serif'] = ['Microsoft YaHei']  # 或 'SimHei'，视具体环境而定
+def plot_metrics(y_true, y_pred):
+    # 计算指标
+    mse = mean_squared_error(y_true, y_pred)
+    r2  = r2_score(y_true, y_pred)
+    
+    # 散点图：预测值 vs 真实值
+    plt.figure(figsize=(6,6))
+    plt.scatter(y_true, y_pred, alpha=0.5, label='预测 vs 真实')
+    plt.plot([y_true.min(), y_true.max()],
+             [y_true.min(), y_true.max()],
+             'r--', label='理想拟合')
+    plt.xlabel('真实 PM2.5')
+    plt.ylabel('预测 PM2.5')
+    plt.title(f'性能评估：MSE={mse:.3f}, R²={r2:.3f}')
+    plt.legend()
+    plt.show()
 
 def load_and_preprocess(path, n_steps=24):
     # 1. 读取
@@ -111,6 +128,24 @@ def main():
     
     r2 = r2_score(y_val, y_pred)
     print(f'Validation R² Score: {r2:.3f}')
+        # 评估
+    y_pred = model.predict(X_val).flatten()
+    # 可视化 MSE 和 R²
+    plot_metrics(y_val, y_pred)
+
+    # 下小时预测（保持不变）
+    last_seq = X[-1].reshape((1, N_STEPS, n_features))
+    pred_scaled = model.predict(last_seq)[0,0]
+    min0, scale0 = scaler.data_min_[0], scaler.scale_[0]
+    pred_pm25 = pred_scaled/scale0 + min0
+    print(f'Next-hour PM2.5 预测值：{pred_pm25:.2f}')
+
+
+
+from sklearn.metrics import mean_squared_error, r2_score
+
+
+
 
 if __name__ == '__main__':
     main()
